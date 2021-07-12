@@ -1,5 +1,36 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  .container
+    .row
+      .col
+        h1 What are you thiking?
+    .row
+      .col
+        p Hello, Welcome to my first Express app
+      .col
+        p I will use Bootstrap 5 for this application
+    .row 
+      .col
+        form#form-thinking
+          .mb-3
+            label.form-label(for="name") Name
+            input#name.form-control(type="text", name="name", placeholder="Name", required)
+          .mb-3
+            label.form-label(for="thinking") What are you thinking?
+            textarea#thought.form-control(name="thinking", cols="30", rows="3", placeholder="I'm thinking in...", required)
+          .mb-3.d-flex
+            button.btn.btn-primary.ms-auto(type="submit") Send thought
+    .row
+      .col
+        .thoughts
+          unless thoughts.length == 0
+            each thought in thoughts
+              .thought.mb-3
+                .name
+                  h4= thought.name
+                .body
+                  p= thought.thought
+          else
+            .d-flex.justify-content-center
+              h3 No thoughts
