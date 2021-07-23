@@ -1,13 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var mysql = require('mysql');
-
-var db = mysql.createConnection({
-  host: "localhost",
-  user: "admin_thoughts",
-  password: "Thoughts321?",
-  database: "myappThinking"
-});
+var db = require('../bin/db');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
